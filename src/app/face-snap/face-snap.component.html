@@ -1,1 +1,18 @@
-<p>face-snap works!</p>
+<div class="face-snap-card" [ngClass]="{ snapped: faceSnap.snaps === 1 }">
+<h2>{{ faceSnap.title | titlecase }}</h2>
+<p>id : {{faceSnap.id}}</p>
+<p>Mis en ligne  {{ faceSnap.createdDate | date:'le : d MMMM YYYY à H:mm' }}</p>
+<img [src]= "faceSnap.imageUrl" [alt]="faceSnap.description">
+<p>{{faceSnap.description}}</p>
+<p *ngIf="faceSnap.location">Emplacement : {{faceSnap.location}}</p>
+
+
+<p>
+    <button (click)="onClicSnap()">{{faceSnap.snapButton}}</button>
+    <span [ngStyle]="{color:'rgb(0,255,0)'}"> 🤌 {{ faceSnap.snaps }}</span>
+    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{ faceSnap.snaps }}</span>
+   
+</p>
+</div>
+
+
