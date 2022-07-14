@@ -14,7 +14,7 @@ export class FaceSnapsService {
       title:"geo",
       description:"Photo de GEO",
       createdDate:new Date(),
-      snaps:0,
+      snaps:10,
       snapFlag:false,
       imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
       snapButton:"Oh snap !",
@@ -25,7 +25,7 @@ export class FaceSnapsService {
       title:"geo2",
       description:"Photo de GEO2",
       createdDate:new Date(),
-      snaps:0,
+      snaps:20,
       snapFlag:false,
       imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
       snapButton:"Oh snap2 !",
@@ -36,7 +36,7 @@ export class FaceSnapsService {
       title:"geo3",
       description:"Photo de GEO3",
       createdDate:new Date(),
-      snaps:0,
+      snaps:30,
       snapFlag:false,
       imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
       snapButton:"Oh snap3 !"
@@ -49,12 +49,22 @@ export class FaceSnapsService {
     return this.faceSnaps;
   };
 
-  snapFaceSnapById(faceSnapId:number):void {
+  getFaceSnapById(faceSnapId:number): FaceSnap {
     const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
     if (faceSnap) {
-        faceSnap.snaps++;
+      return faceSnap;
+  } else {
+      throw new Error('FaceSnap not found!');
+  }
+    
+  };
+
+  snapFaceSnapById(faceSnapId:number, typeSnap:boolean):void {
+    const faceSnap = this.getFaceSnapById(faceSnapId);
+    if (typeSnap) {
+        faceSnap.snaps--;
     } else {
-        throw new Error('FaceSnap not found!');
+      faceSnap.snaps++;
     }
   }
 
