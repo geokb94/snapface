@@ -18,7 +18,7 @@ export class FaceSnapsService {
       snapFlag:false,
       imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
       snapButton:"Oh snap !",
-      location:"Paris"
+      location:"World"
     },
     {
       id:2,
@@ -27,9 +27,9 @@ export class FaceSnapsService {
       createdDate:new Date(),
       snaps:20,
       snapFlag:false,
-      imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
+      imageUrl:"https://cfcaracas.org/wp-content/uploads/france.jpg",
       snapButton:"Oh snap2 !",
-      location:"Lisbonne"
+      location:"Paris"
     },
     {
       id:3,
@@ -38,8 +38,9 @@ export class FaceSnapsService {
       createdDate:new Date(),
       snaps:30,
       snapFlag:false,
-      imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
-      snapButton:"Oh snap3 !"
+      imageUrl:"https://www.javea.com/wp-content/uploads/2015/07/Pelota-de-voley-playa-766x378.jpg",
+      snapButton:"Oh snap3 !",
+      location:"Corse"
 
     }
 
