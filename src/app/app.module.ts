@@ -30,7 +30,8 @@ import { NewFaceSnapComponent } from './new-face-snap/new-face-snap.component';
     BrowserModule,
     appRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'}

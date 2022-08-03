@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FaceSnap } from '../models/face-snap.model';
 
 @Injectable({
@@ -6,7 +8,7 @@ import { FaceSnap } from '../models/face-snap.model';
 })
 export class FaceSnapsService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
   faceSnaps:FaceSnap[]=[
 
     {
@@ -17,7 +19,7 @@ export class FaceSnapsService {
       snaps:10,
       snapFlag:false,
       imageUrl:"https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
-      snapButton:"Oh snap !",
+      snapButton:"Oh snap!",
       location:"World"
     },
     {
@@ -36,7 +38,7 @@ export class FaceSnapsService {
       title:"geo3",
       description:"Photo de GEO3",
       createdDate:new Date(),
-      snaps:30,
+      snaps:0,
       snapFlag:false,
       imageUrl:"https://www.javea.com/wp-content/uploads/2015/07/Pelota-de-voley-playa-766x378.jpg",
       snapButton:"Oh snap3 !",
@@ -46,9 +48,17 @@ export class FaceSnapsService {
 
   ];
 
+  /*
   getAllFaceSnaps(): FaceSnap[] {
     return this.faceSnaps;
   };
+*/
+
+getAllFaceSnaps(): Observable<FaceSnap[]> {
+  return this.http.get<FaceSnap[]>('http://localhost:8080/api/facesnaps');
+};
+
+
 
   getFaceSnapById(faceSnapId:number): FaceSnap {
     const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
@@ -67,7 +77,19 @@ export class FaceSnapsService {
     } else {
       faceSnap.snaps++;
     }
-  }
+  };
+
+  addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }) {
+    const faceSnap: FaceSnap = {
+        ...formValue,
+        snaps: 0,
+        createdDate: new Date(),
+        id: this.faceSnaps[this.faceSnaps.length - 1].id + 1,
+        snapButton:"oh snap!!",
+        snapFlag:false
+    };
+    this.faceSnaps.push(faceSnap);
+}
 
 
 }
