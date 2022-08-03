@@ -1,6 +1,7 @@
-<div class="face-snap-card" [ngClass]="{ snapped: faceSnap.snaps === 1 }">
+<div class="face-snap-card" *ngIf="faceSnap$ | async as faceSnap" [ngClass]="{ snapped: faceSnap.snapFlag }">
 <h2>{{ faceSnap.title | titlecase }}</h2>
 <p>id : {{faceSnap.id}}</p>
+<p>flag : {{faceSnap.snapFlag}}</p>
 <p>Mis en ligne  {{ faceSnap.createdDate | date:'le : d MMMM YYYY à H:mm' }}</p>
 <img [src]= "faceSnap.imageUrl" [alt]="faceSnap.description">
 <p>{{faceSnap.description}}</p>
@@ -8,7 +9,7 @@
 
 
 <p>
-    <button (click)="onClicSnap()">{{faceSnap.snapButton}}</button>
+    <button (click)="onClicSnap(faceSnap.id,faceSnap.snapFlag)">{{faceSnap.snapButton}}</button>
     <span [ngStyle]="{color:'rgb(0,255,0)'}"> 🤌 {{ faceSnap.snaps }}</span>
     <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{ faceSnap.snaps }}</span>
    
